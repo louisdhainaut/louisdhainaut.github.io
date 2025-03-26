@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEETLE - Streak</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="../js/streak.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -19,6 +20,17 @@
             <li id="infinite"><a href="infinite.html"><button>Infini</button></a></li>
             <li id="streak"><a href="streak.html"><button>Streak</button></a></li>
         </ul>
+    </section>
+    <h1>Devinez le pied affiché !</h1>
+    <div id="imageContainer"></div> 
+    <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
+    <button onclick="testerReponse()">Valider</button>
+    <p id="resultat"></p>
+    <p id="score">Score : </p>
+    <section class="hints">
+        <button>indice1</button>
+        <button>indice2</button>
+        <button>indice3</button>
     </section>
     <section id="game">  
         <p>Quel est le champion sur l'image ?</p>
