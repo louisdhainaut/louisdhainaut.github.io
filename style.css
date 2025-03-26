@@ -49,3 +49,22 @@ button{
     display: flex;
     justify-content: center;
 }
+
+.navbutton {
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+    width: 5vw;
+    margin: 1vw;
+    border-radius: 45%;
+}
+
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: gray;
+}
