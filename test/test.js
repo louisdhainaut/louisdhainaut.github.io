@@ -1,30 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
     const resultat = document.getElementById("resultat");
     const reponse = document.getElementById("reponse");
-    let imageActuelle = null; // Stocke l'image affichée pour comparer la réponse
+    const affichageScore = document.getElementById("score");
+    const imageContainer = document.getElementById("imageContainer"); // Conteneur d'image
+    let imageActuelle = null;
+    let score = 0;
 
     function afficherImageAleatoire() {
         fetch("images.json")
             .then(response => response.json())
             .then(data => {
-                // Sélectionner une image aléatoire
                 const randomItem = data[Math.floor(Math.random() * data.length)];
-                imageActuelle = randomItem; // Stocke l'image actuelle pour comparaison
+                imageActuelle = randomItem;
 
                 // Supprimer l'ancienne image
-                const oldImage = document.getElementById("imageAffichee");
-                if (oldImage) {
-                    oldImage.remove();
-                }
+                imageContainer.innerHTML = ""; // Vide le conteneur avant d'ajouter la nouvelle image
 
-                // Ajouter la nouvelle image
+                // Ajouter la nouvelle image dans le conteneur
                 const img = document.createElement("img");
                 img.src = "images/" + randomItem.image;
-                img.alt = "Devinez ce que c'est"; // Ne pas donner la réponse
+                img.alt = "Devinez ce que c'est";
                 img.id = "imageAffichee";
-                img.style.width = "200px";
+                img.style.height = "150px";
 
-                document.body.appendChild(img);
+                imageContainer.appendChild(img); // Ajoute l'image dans le conteneur
             })
             .catch(error => console.error("Erreur lors du chargement du JSON :", error));
     }
@@ -34,16 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
             resultat.textContent = "✅ Correct ! Bravo !";
-            let imageActuelle = null;
+            score++;
+            affichageScore.textContent = `Score : ${score}`;
             afficherImageAleatoire();
         } else {
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
         }
     }
 
-    // Lancer une image aléatoire au chargement
     afficherImageAleatoire();
+    affichageScore.textContent = `Score : ${score}`;
 
-    // Rendre les fonctions accessibles dans le HTML
     window.testerReponse = testerReponse;
 });
