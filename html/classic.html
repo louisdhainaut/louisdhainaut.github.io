@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEETLE - Classique</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="../js/daily.js" defer></script>
 </head>
 <body>
+    <section class="background" style="background-image: url(../img/background.jpg);">
     <header class="header">
         <h1><a href="../index.html">FEETLE</a></h1>
     </header>
@@ -20,6 +22,11 @@
             <li id="streak"><a href="streak.html"><button>Streak</button></a></li>
         </ul>
     </section>
+    <h1>Devinez le pied affiché !</h1>
+    <div id="imageContainer"></div> 
+    <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
+    <button onclick="testerReponse()">Valider</button>
+    <p id="resultat"></p>
     <section class="hints">
         <button>indice1</button>
         <button>indice2</button>
@@ -38,5 +45,6 @@
     <footer class="footer">
         © Louito | Bacomus | Axwell - 2025
     </footer>
+    </section>
 </body>
 </html>

@@ -1,16 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
     const resultat = document.getElementById("resultat");
     const reponse = document.getElementById("reponse");
-    const affichageScore = document.getElementById("score");
     const imageContainer = document.getElementById("imageContainer"); // Conteneur d'image
     let imageActuelle = null;
-    let score = 0;
+
+    function getDailyRandomNumber(max) {
+        const today = new Date();
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate(); // Ex: 20240326
+        const pseudoRandom = (seed * 9301 + 49297) % 233280; // Générateur simple
+        return Math.floor((pseudoRandom / 233280) * max);
+    }
 
     function afficherImageAleatoire() {
         fetch("../img/images.json")
             .then(response => response.json())
             .then(data => {
-                const randomItem = data[Math.floor(Math.random() * data.length)];
+                const randomItem = data[Math.floor(getDailyRandomNumber(data.length))];
                 imageActuelle = randomItem;
 
                 // Supprimer l'ancienne image
@@ -33,16 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
             resultat.textContent = "✅ Correct ! Bravo !";
-            score++;
-            affichageScore.textContent = `Score : ${score}`;
-            afficherImageAleatoire();
         } else {
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
         }
     }
 
     afficherImageAleatoire();
-    affichageScore.textContent = `Score : ${score}`;
 
     window.testerReponse = testerReponse;
 });
