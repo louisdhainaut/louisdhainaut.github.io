@@ -1,0 +1,28 @@
+html{
+    background-color: lightgray;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px 35vw 0 35vw;
+}
+
+a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+
+}
+
+button{
+    padding: 50px 25px 50px 25px;
+    width: 400px;
+}
