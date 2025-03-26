@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
 
     function afficherImageAleatoire() {
-        fetch("images/images.json")
+        fetch("img/images.json")
             .then(response => response.json())
             .then(data => {
                 const randomItem = data[Math.floor(Math.random() * data.length)];
