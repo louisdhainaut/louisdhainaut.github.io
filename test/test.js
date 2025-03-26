@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
             resultat.textContent = "✅ Correct ! Bravo !";
+            let imageActuelle = null;
+            afficherImageAleatoire();
         } else {
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
         }
