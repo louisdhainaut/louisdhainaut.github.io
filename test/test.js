@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const resultat = document.getElementById("resultat");
     const reponse = document.getElementById("reponse");
+    const affichageScore = document.getElementById("score");
     let imageActuelle = null; // Stocke l'image affichée pour comparer la réponse
+    let score = 0;
 
     function afficherImageAleatoire() {
         fetch("images.json")
@@ -34,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
             resultat.textContent = "✅ Correct ! Bravo !";
+            score++;
             let imageActuelle = null;
+            affichageScore.textContent = `Score : ${score}`;
             afficherImageAleatoire();
         } else {
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Lancer une image aléatoire au chargement
     afficherImageAleatoire();
+    affichageScore.textContent = `Score : ${score}`;
 
     // Rendre les fonctions accessibles dans le HTML
     window.testerReponse = testerReponse;
