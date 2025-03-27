@@ -68,3 +68,13 @@ button{
 button:hover {
     background-color: gray;
 }
+
+.hints button {
+    height: 8vh;
+    width: 8vw;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+}
