@@ -21,23 +21,20 @@
             <li id="streak"><a href="streak.html"><button class="navbutton">🔥</button></a></li>
         </ul>
     </section>
-    <section class="hints">
-        <button>indice1</button>
-        <button>indice2</button>
-        <button>indice3</button>
-    </section>
-    <section class="game"> 
-    <h1>Devinez le pied affiché !</h1>
-    <div id="imageContainer"></div> 
-    <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
-    <button onclick="testerReponse()">Valider</button>
-    <p id="resultat"></p>
-   
-        <p>Quel est le champion sur l'image ?</p>
+    <section id="game">
+        <h1>Devinez le pied affiché !</h1>
         <div class="placeholder">
-
+            <div id="imageContainer"></div> 
         </div>
-        <p>Chaque essai dezoome légèrement.</p>
+        <section class="hints">
+            <button>indice1</button>
+            <button>indice2</button>
+            <button>indice3</button>
+        </section>
+        <p>Quel est le champion sur l'image ?</p>
+        <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
+        <button onclick="testerReponse()">Valider</button>
+    <p id="resultat"></p>
     </section>
     <section class="lastChamp">
         Le champion d'hier était : 
