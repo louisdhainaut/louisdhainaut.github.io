@@ -12,9 +12,13 @@ html{
 a:link, a:visited{
     color:white;
 }
+
 body{
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .header{
@@ -44,23 +48,22 @@ a{
     width: 400px;
 }
 
-.navbutton{
-    font-size: 36px;
-    padding: 0em 0.6em 1.5em 0.6em;
-}
-
 .footer {
     display: flex;
     justify-content: center;
 }
 
 .navbutton {
+    font-size: 36px;
+    padding: 0em 1em 1.5em 1em;
     display: flex;
     justify-content: center;
     height: 5vh;
     width: 5vw;
     margin: 1vw;
-    border-radius: 45%;
+    border-radius: 25%;
+    background-color: #1e2328;
+    color: #ead44d;
 }
 
 .navbar ul {
@@ -96,4 +99,8 @@ button:hover {
 ul
 {
   list-style-type: none;
+}
+
+.game{
+    margin-left: 25vw;
 }
