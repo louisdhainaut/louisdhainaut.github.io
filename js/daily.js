@@ -44,6 +44,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     afficherImageAleatoire();
-
     window.testerReponse = testerReponse;
 });
