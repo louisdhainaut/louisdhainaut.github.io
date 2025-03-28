@@ -6,10 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getDailyRandomNumber(max) {
         const today = new Date();
-        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate(); // Ex: 20240326
-        const pseudoRandom = (seed * 9301 + 49297) % 233280; // Générateur simple
-        return Math.floor((pseudoRandom / 233280) * max);
+        const seed = today.toDateString(); // "Tue Mar 26 2024"
+        
+        // Convertir en hash simple (somme des char codes)
+        let hash = 0;
+        for (let i = 0; i < seed.length; i++) {
+            hash = (hash * 31 + seed.charCodeAt(i)) % 1000000; // Nombre pseudo-aléatoire
+        }
+    
+        return hash % max; // Nombre dans l'intervalle [0, max-1]
     }
+    
 
     function afficherImageAleatoire() {
         fetch("../img/images.json")
