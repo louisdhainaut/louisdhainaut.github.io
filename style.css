@@ -59,7 +59,7 @@ a{
     margin: 1vw;
     border-radius: 25%;
     background-color: #1e2328;
-    color: linear-gradient(#ead44d 45%, #c98c2e 10%, #ead44d 45%);
+    color: #ead44d;
 }
 
 .navbar ul {
