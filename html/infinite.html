@@ -11,17 +11,16 @@
     <header class="header">
         <h1><a href="../index.html">FEETLE</a></h1>
     </header>
-    <section class="gameTitle">
-        <h2>Classique - Infini</h2>
-    </section>
     <section class="navbar">
-        <ul>
-            <li id="classic"><a href="classic.html"><button class="navbutton">?</button></a></li>
-            <li id="infinite"><a href="infinite.html"><button class="navbutton">∞</button></a></li>
-            <li id="streak"><a href="streak.html"><button class="navbutton">🔥</button></a></li>
-        </ul>
+        <a href="classic.html" id="classic"><button class="navbutton">?</button></a>
+        <a href="infinite.html" id="infinite"><button class="navbutton">∞</button></a>
+        <a href="streak.html" id="streak"><button class="navbutton">🔥</button></a>
     </section>
-    <section id="game">
+    <center>
+    <section class="game">
+        <section class="gameTitle">
+            <h2>Classique - Infini</h2>
+        </section>  
         <h1>Devinez le pied affiché !</h1>
         <div class="placeholder">
             <div id="imageContainer"></div> 
@@ -36,10 +35,11 @@
         <button onclick="testerReponse()">Valider</button>
     <p id="resultat"></p>
     <p id="score">Score : </p>
-    </section>
     <section class="lastChamp">
         Le champion d'hier était : 
     </section>
+    </section>
+    </center>
     <footer class="footer">
         © Louito | Bacomus | Axwell - 2025
     </footer>
