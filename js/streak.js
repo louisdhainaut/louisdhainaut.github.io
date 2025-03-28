@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const reponse = document.getElementById("reponse");
     const affichageScore = document.getElementById("score");
     const imageContainer = document.getElementById("imageContainer"); // Conteneur d'image
+    const maStreak = document.getElementById("maStreak")
     let imageActuelle = null;
     let score = 0;
+    let currentStreak = 0;
 
     function afficherImageAleatoire() {
         fetch("../img/images.json")
@@ -35,17 +37,31 @@ document.addEventListener("DOMContentLoaded", () => {
             resultat.textContent = "✅ Correct ! Bravo ! (ggwp)";
             score++;
             affichageScore.textContent = `Score : ${score}`;
+
+            currentStreak = Math.max(currentStreak, score);
+            maStreak.textContent = `Votre meilleure streak : ${currentStreak}`;
+
             afficherImageAleatoire();
         } else {
-            resultat.textContent = "❌ Mauvaise réponse, vous avez intérompu votre série ! (t'es trop nul c'était ez)";
-            score = 0;
-            affichageScore.textContent = `Score : ${score}`;
-            afficherImageAleatoire();
+            loose();
         }
     }
 
-    afficherImageAleatoire();
-    affichageScore.textContent = `Score : ${score}`;
+    function loose() {
+        resultat.textContent = "❌ Mauvaise réponse, vous avez interrompu votre série ! (t'es trop nul c'était ez)";
+        maStreak.textContent = `Votre meilleure streak : ${currentStreak}`;
+        score = 0;
+        affichageScore.textContent = `Score : ${score}`;
 
-    window.testerReponse = testerReponse;
+        afficherImageAleatoire();
+    }
+
+    function main() {
+        afficherImageAleatoire();
+        affichageScore.textContent = `Score : ${score}`;
+        maStreak.textContent = `Votre meilleure streak : ${currentStreak}`;
+        window.testerReponse = testerReponse;
+    }
+
+    main();
 });
