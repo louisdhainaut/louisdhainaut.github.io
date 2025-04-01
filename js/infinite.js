@@ -32,11 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
         let monTexte = reponse.value.trim().toLowerCase();
 
         if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
+            document.getElementById("reponse").value = '';
             resultat.textContent = "✅ Correct ! Bravo !";
             score++;
             affichageScore.textContent = `Score : ${score}`;
             afficherImageAleatoire();
         } else {
+            document.getElementById("reponse").value = '';
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
         }
     }

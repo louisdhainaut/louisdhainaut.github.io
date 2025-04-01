@@ -210,3 +210,20 @@ ul {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
+
+.container input{
+    color: white;
+    font-weight: 900;
+    font-size: 5vh;
+    background: #3a5fcd;
+    border: none;
+    border-radius: 6px;
+}
+
+.suggest{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

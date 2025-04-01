@@ -6,6 +6,7 @@
     <title>FEETLE - Streak</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../js/streak.js" defer></script>
+    <script src="../js/suggest.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -26,8 +27,11 @@
             <div id="imageContainer"></div> 
         </div>
         <p>Quel est le champion sur l'image ?</p>
-        <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
-        <button onclick="testerReponse()">Valider</button>
+        <div>
+            <input class="input" id="reponse" name="reponse" placeholder="Votre réponse ici">
+            <button onclick="testerReponse()">></button>
+            <div class="suggest"></div>
+        </div>
         <p id="resultat"></p>
         <p id="score">Score : </p>
         <p>1 guess = changement de champion</p>

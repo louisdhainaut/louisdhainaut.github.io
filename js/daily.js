@@ -76,8 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
             resultat.textContent = "✅ Correct ! Bravo !";
             localStorage.setItem("reussi", JSON.stringify(true));
             showSuccessPopup();
+            document.getElementById("reponse").value = '';
         } else {
             resultat.textContent = "❌ Incorrect, essayez encore !";
+            document.getElementById("reponse").value = '';
         }
     }
 
