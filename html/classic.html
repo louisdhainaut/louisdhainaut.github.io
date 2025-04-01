@@ -6,40 +6,59 @@
     <title>FEETLE - Classique</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../js/daily.js" defer></script>
+    <script src="../js/suggest.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <h1><a href="../index.html">FEETLE</a></h1>
-    </header>
-    <section class="navbar">
-            <a href="classic.html" id="classic"><button class="navbutton">?</button></a>
-            <a href="infinite.html" id="infinite"><button class="navbutton">∞</button></a>
-            <a href="streak.html" id="streak"><button class="navbutton">🔥</button></a>
-    </section>
-    <section class="game">
-        <section class="gameTitle">
-            <h2>Classique - Daily</h2>
+        <header class="header">
+            <h1><a href="../index.html">FEETLE</a></h1>
+        </header>
+        <section class="navbar">
+                <a href="classic.html" id="classic"><button class="navbutton">?</button></a>
+                <a href="infinite.html" id="infinite"><button class="navbutton">∞</button></a>
+                <a href="streak.html" id="streak"><button class="navbutton">🔥</button></a>
         </section>
-        <h1>Devinez le pied affiché !</h1>
-        <div class="placeholder">
-            <div id="imageContainer"></div> 
-        </div>
-        <section class="hints">
-            <button>indice1</button>
-            <button>indice2</button>
-            <button>indice3</button>
+        <section class="game">
+            <section class="gameTitle">
+                <h2>Classique - Daily</h2>
+            </section>
+            <h1>Devinez le pied affiché !</h1>
+            <div class="placeholder">
+                <div id="imageContainer"></div> 
+            </div>
+            <section class="hints">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+            </section>
+            <p>Quel est le champion sur l'image ?</p>
+            <div>
+                <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
+                <button onclick="testerReponse()">></button>
+                <div class="suggest"></div>
+            </div>
+            <p id="resultat"></p>
+            <section class="lastChamp">
+                Le champion d'hier était : 
+            </section>
         </section>
-        <p>Quel est le champion sur l'image ?</p>
-        <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
-        <button onclick="testerReponse()">Valider</button>
-        <p id="resultat"></p>
-        <section class="lastChamp">
-            Le champion d'hier était : 
-        </section>
-    </section>
 
-    <footer class="footer">
-        © Louito | Bacomus | Axwell - 2025
-    </footer>
+        <footer class="footer">
+            © Louito | Bacomus | Axwell - 2025
+        </footer>
+        <div class="overlay" id="overlay"></div>
+        <div class="popup-container" id="popup">
+            <div class="popup-content">
+                <button class="close-btn" id="closePopup">&times;</button>
+                <h2 class="popup-title" id="popupTitle">Bravo !</h2>
+                <div class="popup-body">
+                    <p id="popupMessage"></p>
+                    <img id="popupImage" src="" alt="Image du champion" class="popup-image">
+                </div>
+                <div class="popup-footer">
+                    <button class="popup-btn share-btn" id="shareBtn">Partager</button>
+                    <button class="popup-btn next-btn" id="nextBtn">Continuer</button>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

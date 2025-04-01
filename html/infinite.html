@@ -6,6 +6,7 @@
     <title>FEETLE - Classique</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../js/infinite.js" defer></script>
+    <script src="../js/suggest.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -25,13 +26,16 @@
             <div id="imageContainer"></div> 
         </div>
         <section class="hints">
-            <button>indice1</button>
-            <button>indice2</button>
-            <button>indice3</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
         </section>
         <p>Quel est le champion sur l'image ?</p>
-        <input type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
-        <button onclick="testerReponse()">Valider</button>
+        <div class="container">
+            <input class="input" type="text" id="reponse" name="reponse" placeholder="Votre réponse ici">
+            <button onclick="testerReponse()">></button>
+            <div class="suggest"></div>
+        </div>
         <p id="resultat"></p>
         <p id="score">Score : </p>
     </section>
