@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let score = 0;
 
     function afficherImageAleatoire() {
-        fetch("../img/images.json")
+        fetch("../img/splash_arts/images.json")
             .then(response => response.json())
             .then(data => {
                 const randomItem = data[Math.floor(Math.random() * data.length)];
@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Ajouter la nouvelle image dans le conteneur
                 const img = document.createElement("img");
-                img.src = "../img/" + randomItem.image;
+                img.src = `../img/splash_arts/${randomItem.image}`;
                 img.alt = "Devinez ce que c'est";
                 img.id = "imageAffichee";
-                img.style.height = "150px";
+                img.style.height = "400px";
 
                 imageContainer.appendChild(img); // Ajoute l'image dans le conteneur
             })

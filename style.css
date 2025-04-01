@@ -12,9 +12,14 @@ html{
 a:link, a:visited{
     color:white;
 }
+
 body{
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .header{
