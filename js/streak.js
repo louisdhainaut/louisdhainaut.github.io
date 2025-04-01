@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.src = `../img/splash_arts/${randomItem.image}`;
                 img.alt = "Devinez ce que c'est";
                 img.id = "imageAffichee";
-                img.style.height = "400px";
+                img.style.height = "350px";
 
                 imageContainer.appendChild(img); // Ajoute l'image dans le conteneur
             })
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             affichageScore.textContent = `Score : ${score}`;
 
             currentStreak = Math.max(currentStreak, score);
+            document.getElementById('reponse').value = ''
 
             afficherImageAleatoire();
         } else {
@@ -46,11 +47,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    reponse.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Empêche le rechargement de la page si l'input est dans un formulaire
+            testerReponse();
+        }
+    });
+
     function loose() {
         resultat.textContent = "❌ Mauvaise réponse, vous avez interrompu votre série ! (t'es trop nul c'était ez)";
         maStreak.textContent = `Votre meilleure streak : ${currentStreak}`;
         score = 0;
         affichageScore.textContent = `Score : ${score}`;
+        document.getElementById('reponse').value = ''
 
         afficherImageAleatoire();
     }

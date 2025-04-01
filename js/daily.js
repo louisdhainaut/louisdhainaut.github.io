@@ -1,48 +1,96 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const resultat = document.getElementById("resultat");
-    const reponse = document.getElementById("reponse");
-    const imageContainer = document.getElementById("imageContainer"); // Conteneur d'image
+    // Initialisation des états
+    if (localStorage.getItem("reussi") === null) {
+        localStorage.setItem("reussi", JSON.stringify(false));
+    }
+    
+    const reussi = JSON.parse(localStorage.getItem("reussi"));
     let imageActuelle = null;
 
+    // Éléments DOM
+    const resultat = document.getElementById("resultat");
+    const reponse = document.getElementById("reponse");
+    const imageContainer = document.getElementById("imageContainer");
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupMessage = document.getElementById("popupMessage");
+    const popupImage = document.getElementById("popupImage");
+    const popupScore = document.getElementById("popupScore");
+    const closePopup = document.getElementById("closePopup");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // Fonction aléatoire quotidienne
     function getDailyRandomNumber(max) {
         const today = new Date();
-        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate(); // Ex: 20240326
-        const pseudoRandom = (seed * 9301 + 49297) % 233280; // Générateur simple
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+        const pseudoRandom = (seed * 9301 + 49297) % 233280;
         return Math.floor((pseudoRandom / 233280) * max);
     }
 
+    // Chargement de l'image
     function afficherImageAleatoire() {
         fetch("../img/splash_arts/images.json")
             .then(response => response.json())
             .then(data => {
-                const randomItem = data[Math.floor(getDailyRandomNumber(data.length))];
+                const randomItem = data[getDailyRandomNumber(data.length)];
                 imageActuelle = randomItem;
 
-                // Supprimer l'ancienne image
-                imageContainer.innerHTML = ""; // Vide le conteneur avant d'ajouter la nouvelle image
-
-                // Ajouter la nouvelle image dans le conteneur
+                imageContainer.innerHTML = "";
                 const img = document.createElement("img");
                 img.src = `../img/splash_arts/${randomItem.image}`;
-                img.alt = "Devinez ce que c'est";
-                img.id = "imageAffichee";
-                img.style.height = "400px";
+                img.alt = "Image à deviner";
+                img.style.height = "350px";
+                imageContainer.appendChild(img);
 
-                imageContainer.appendChild(img); // Ajoute l'image dans le conteneur
+                // Affiche la popup si déjà réussi aujourd'hui
+                if (reussi) {
+                    showSuccessPopup();
+                }
             })
-            .catch(error => console.error("Erreur lors du chargement du JSON :", error));
+            .catch(error => console.error("Erreur:", error));
     }
 
-    function testerReponse() {
-        let monTexte = reponse.value.trim().toLowerCase();
+    // Fonctions pour la popup
+    function showSuccessPopup() {
+        popupTitle.textContent = "Bravo !";
+        popupMessage.textContent = `Vous avez reconnu ${imageActuelle.texte} !`;
+        popupImage.src = `../img/splash_arts/${imageActuelle.image}`;
 
-        if (imageActuelle && monTexte === imageActuelle.texte.toLowerCase()) {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+
+    function hidePopup() {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        document.body.style.overflow = "";
+    }
+
+    // Vérification de la réponse
+    function testerReponse() {
+        const reponseUtilisateur = reponse.value.trim().toLowerCase();
+        
+        if (imageActuelle && reponseUtilisateur === imageActuelle.texte.toLowerCase()) {
             resultat.textContent = "✅ Correct ! Bravo !";
+            localStorage.setItem("reussi", JSON.stringify(true));
+            showSuccessPopup();
         } else {
-            resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
+            resultat.textContent = "❌ Incorrect, essayez encore !";
         }
     }
 
+    // Écouteurs d'événements
+    reponse.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") testerReponse();
+    });
+
+    closePopup.addEventListener("click", hidePopup);
+    overlay.addEventListener("click", hidePopup);
+    nextBtn.addEventListener("click", hidePopup);
+
+    // Initialisation
     afficherImageAleatoire();
-    window.testerReponse = testerReponse;
+    window.testerReponse = testerReponse; // Rend la fonction globale
 });

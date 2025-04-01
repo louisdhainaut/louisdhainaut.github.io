@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.src = `../img/splash_arts/${randomItem.image}`;
                 img.alt = "Devinez ce que c'est";
                 img.id = "imageAffichee";
-                img.style.height = "400px";
+                img.style.height = "350px";
 
                 imageContainer.appendChild(img); // Ajoute l'image dans le conteneur
             })
@@ -40,6 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
             resultat.textContent = "❌ Mauvaise réponse, essayez encore !";
         }
     }
+
+    reponse.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Empêche le rechargement de la page si l'input est dans un formulaire
+            testerReponse();
+        }
+    });
 
     afficherImageAleatoire();
     affichageScore.textContent = `Score : ${score}`;
