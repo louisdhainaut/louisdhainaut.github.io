@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const img = document.createElement("img");
                 img.src = `../img/splash_arts/${randomItem.image}`;
                 img.alt = "Image à deviner";
-                img.style.height = "350px";
+                img.style.width = "80%";
                 imageContainer.appendChild(img);
 
                 // Affiche la popup si déjà réussi aujourd'hui

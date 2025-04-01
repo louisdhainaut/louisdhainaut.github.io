@@ -105,6 +105,7 @@ button:hover {
 }
 
 .game {
+    transition: 0.1s;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -226,4 +227,17 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (max-width: 1186px) {
+    .game{
+        transition: 0.1s;
+        width: 75vw;
+    }
+}
+@media (max-width: 612px) {
+    .game{
+        transition: 0.1s;
+        width: 90vw;
+    }
 }
